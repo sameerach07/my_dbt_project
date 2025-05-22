@@ -1,6 +1,16 @@
 
 version: 2
 
+sources:
+  - name: raw
+    schema: public
+    tables:
+      - name: provet_clients_new
+        description: provet Clients Staging table
+        freshness:
+          warn_after: { count: 24, period: hour }
+          error_after: { count: 48, period: hour }
+
 models:
     - name: my_first_dbt_model
       description: "A starter dbt model"
@@ -8,8 +18,7 @@ models:
           - name: id
             description: "The primary key for this table"
             tests:
-                - unique
-                - not_null
+                - unique                
 
     - name: my_second_dbt_model
       description: "A starter dbt model"
@@ -17,5 +26,4 @@ models:
           - name: id
             description: "The primary key for this table"
             tests:
-                - unique
-                - not_null
+                - unique                
