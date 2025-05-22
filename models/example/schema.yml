@@ -31,9 +31,12 @@ models:
       description: "Its a raw source from Snowflake"
       columns:
         - name: client_id
-          description: "Its client id column"
+          description: "Its client id column" # instead of this we can use doc block file as well. ex: "{{ doc('mydocs') }}"
+          #description: "{{ doc('mydocs') }}"
           tests:
             - unique
             - not_null
+            - accepted_values:
+                values: [123]
             
           

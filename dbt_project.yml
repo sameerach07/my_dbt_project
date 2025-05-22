@@ -35,8 +35,21 @@ clean-targets:         # directories to be removed by `dbt clean`
 # continue to be built as views. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 
+on-run-start: "insert into target_db.public.dbt_audit_log(event_name) values('project run start')"
+on-run-end: "insert into target_db.public.dbt_audit_log(event_name) values('project run ends')"
+
 models:
+  pre-hook: "insert into target_db.public.dbt_audit_log(event_name) values('Model run start') "
+  post-hook: "insert into target_db.public.dbt_audit_log(event_name) values('Model run ends')"
+    
   my_new_project:
     # Applies to all files under models/example/
     example:
+      #we can mention pre hook and post-hook for each model 
       +materialized: table
+    my_examples:
+      #we can mention pre hook and post-hook for each model 
+      +materialized: table
+
+seeds:
+  
