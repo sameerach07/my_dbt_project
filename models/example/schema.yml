@@ -27,3 +27,13 @@ models:
             description: "The primary key for this table"
             tests:
                 - unique                
+    - name: ConnectRawdata
+      description: "Its a raw source from Snowflake"
+      columns:
+        - name: client_id
+          description: "Its client id column"
+          tests:
+            - unique
+            - not_null
+            
+          

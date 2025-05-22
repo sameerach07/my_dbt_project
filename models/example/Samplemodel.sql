@@ -1,0 +1,3 @@
+{{ config(meterialized='view') }}
+
+select * from {{ source('raw','provet_clients_new') }}

@@ -5,7 +5,3 @@ with temp as (
 )
 select a.* from temp a join {{ ref('usingsourcerepresentation')}} b 
 on a.client_id = b.client_id
-
-
-
-
